@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>The Chef</title>
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="css/fancybox-thumbs.css">
+        <link rel="stylesheet" type="text/css" href="css/fancybox-buttons.css">
+        <link rel="stylesheet" type="text/css" href="css/fancybox.css">
+        <link rel="stylesheet" type="text/css" href="css/animate.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/chat.css">
+        <link rel="stylesheet" type="text/css" href="css/check.css">
+
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/fancybox.js"></script>
+        <script type="text/javascript" src="js/fancybox-buttons.js"></script>
+        <script type="text/javascript" src="js/fancybox-media.js"></script>
+        <script type="text/javascript" src="js/fancybox-thumbs.js"></script>
+        <script type="text/javascript" src="js/wow.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+
+        <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+        <script type="text/javascript" src="js/html5lightbox.js"></script>
+    </head>
+    <body>
+
+        <section class="billboard2 light" style="background: white">
+            <header class="wrapper light">
+                <a href="#"><img class="logo" src="img/logo.png" alt="" style="margin-top:3px"/></a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html" style="color:black">Home</a></li>
+                        <li><a href="#ingredients" style="color:black">Ingredients</a></li>
+                        <li><a href="#community" style="color:black">Community</a></li>
+                        <li><a href="#profile" style="color:black">Profile</a></li>
+                    </ul>
+                </nav>
+            </header>
+        </section><!--  End billboard  -->
+
+        <section class="video">
+
+            <a href="JavaScript:html5Lightbox.showLightbox(3, 'https://www.youtube.com/watch?v=OJB3_asB2rc', '');" id="play_btn" style="margin-top:140px" class="fancybox animated wow flipInX" data-wow-duration="2s"></a>
+        </section><!--  End video  -->
+
+                <section class="testimonials wrapper" style="width:300px; margin-bottom: 100px; margin-top: 50px" >
+                            <div class="title animated wow fadeIn">
+                <h2>Shepard Pie</h2>       
+                <h2 id="counter" style="font-size: 80%">Updating views...</h2>
+                     </div>
+
+                     <script>
+                    // CREATE A REFERENCE TO FIREBASE
+                    var upVote = new Firebase('https://group19-assignment1.firebaseIO.com/');
+
+                    var added = false;
+
+  upVote.child("counter").on('value', function(snap) {
+      var v = snap.val();
+      v !== null && $('#counter').text( parseInt(v) + " views!");
+      added || add();
+  });
+
+  function add() {
+     added = true;
+     upVote.child("counter").transaction(function(currentVal) {
+        isFinite(currentVal) ||  (currentVal = 0);
+        return currentVal+1;
+     });     
+  }
+                    
+                </script>
+                <a href="profile.html">
+                        <ul class="clearfix">
+                <li class="animated wow fadeInDown">
+                    <div class="client" style="margin-left:100px; margin-bottom:130px">
+                        <img src="img/gor.jpeg" class="avatar" style="width:100px; height:100px"/>
+                    </div>
+                </li>
+            </ul>
+            
+            <div class="title animated wow fadeIn" style="margin-bottom:-50px">
+                <h2>Gordon Ramsay</h2>
+                <img class="icon" src="img/rank.png" alt=""/>
+                <hr class="separator"/>
+            </div>
+        </a>
+        </section><!--  End testimonials  -->
+
+            <section class="blog_posts" style="margin-top:0px;" >
+
+            <div class="wrapper" id="ingredients">
+                <div class="title animated wow fadeIn">
+                    <h2>Ingredients</h2>
+                    <h3>All you need to bring your recipe to life</h3>
+                    <hr class="separator"/>
+                </div>
+
+                <ul class="clearfix">
+                    <li class="animated wow fadeInDown">
+                        <div class="media">
+                            <div class="date">
+                                <span class="day">Olive oil</span>
+                                <span class="month"></span>
+                            </div>
+                            <a href="#">
+                                <img src="img/olive.jpg" alt=""/>
+                            </a>
+                        </div>
+                        <a href="#">
+                            <h1>2 Tbsp</h1>
+                        </a>
+                    </li>
+
+                    <li class="animated wow fadeInDown" data-wow-delay=".2s">
+                        <div class="media">
+                            <div class="date">
+                                <span class="day">Ground Beef</span>
+                                <span class="month"></span>
+                            </div>
+                            <a href="#">
+                                <img src="img/beef.jpg" alt=""/>
+                            </a>
+                        </div>                  
+                        <a href="#">
+                            <h1>About 1.5 lbs</h1>
+                        </a>
+                    </li>
+
+                    <li class="animated wow fadeInDown" data-wow-delay=".4s">
+                        <div class="media">
+                            <div class="date">
+                                <span class="day">Carrot</span>
+                                <span class="month"></span>
+                            </div>
+                            <a href="#">
+                                <img src="img/carrot.jpg" alt=""/>
+                            </a>
+                        </div>
+                        <a href="#">
+                            <h1>1 Grated</h1>
+                        </a>
+                    </li>
+
+                    <li class="animated wow fadeInDown" data-wow-delay=".6s">
+                        <div class="media">
+                            <div class="date">
+                                <span class="day">Large Onion</span>
+                                <span class="month"></span>
+                            </div>
+                            <a href="#">
+                                <img src="img/onion.jpg" alt=""/>
+                            </a>
+                        </div>
+                        <a href="#">
+                            <h1>1 Grated</h1>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="clearfix">
+                    <li class="animated wow fadeInDown">
+                        <div class="media">
+                            <div class="date">
+                                <span class="day">Frozen peas</span>
+                                <span class="month"></span>
+                            </div>
+                            <a href="#">
+                                <img src="img/peas.jpg" alt=""/>
+                            </a>
+                        </div>
+                        <a href="#">
+                            <h1>A bag</h1>
+                        </a>
+                    </li>
+
+                    <li class="animated wow fadeInDown" data-wow-delay=".2s">
+                        <div class="media">
+                            <div class="date">
+                                <span class="day">Fresh Rosemary</span>
+                                <span class="month"></span>
+                            </div>
+                            <a href="#">
+                                <img src="img/rose.jpeg" alt=""/>
+                            </a>
+                        </div>                  
+                        <a href="#">
+                            <h1>Chive</h1>
+                        </a>
+                    </li>
+
+                    <li class="animated wow fadeInDown" data-wow-delay=".4s">
+                        <div class="media">
+                            <div class="date">
+                                <span class="day">Fresh Thyme</span>
+                                <span class="month"></span>
+                            </div>
+                            <a href="#">
+                                <img src="img/thyme.jpeg" alt=""/>
+                            </a>
+                        </div>
+                        <a href="#">
+                            <h1>Chive</h1>
+                        </a>
+                    </li>
+
+                    <li class="animated wow fadeInDown" data-wow-delay=".6s">
+                        <div class="media">
+                            <div class="date">
+                                <span class="day">Minced Garlic</span>
+                                <span class="month"></span>
+                            </div>
+                            <a href="#">
+                                <img src="img/garlic.jpg" alt=""/>
+                            </a>
+                        </div>
+                        <a href="#">
+                            <h1>4 cloves</h1>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+      
+            <div class="title animated wow fadeIn" style="margin-top:100px; margin-bottom:-50px" id="preparations">
+                <h2>Preparations</h2>
+                <h3>All you need to bring your recipe to life</h3>
+                <hr class="separator"/>
+            </div>
+
+            <div class="wrapper" style="; margin-top: 100px;">
+                <div class="point">
+                <div class="roundedTwo one">
+                    <input type="checkbox" value="None" id="one" name="check" />
+                    <label for="one"></label>
+
+                    <h3>1. Bring a large pot of salted water to a boil. Add potatoes and cook until tender but still firm, about 15 minutes. Drain and mash. Mix in butter, finely chopped onion and 1/4 cup shredded cheese. Season with salt and pepper to taste; set aside.</h3>
+                </div>
+            </div>
+<div class="point">
+                <div class="roundedTwo">
+                    <input type="checkbox" value="None" id="two" name="check" />
+                    <label for="two"></label>
+
+                    <h3>2. Bring a large pot of salted water to a boil. Add carrots and cook until tender but still firm, about 15 minutes. Drain, mash and set aside. Preheat oven to 375 degrees F (190 degrees C.)</h3>
+                </div>
+            </div>
+<div class="point">
+                                <div class="roundedTwo">
+                    <input type="checkbox" value="None" id="three" name="check" />
+                    <label for="three"></label>
+
+                    <h3>3. Heat oil in a large frying pan. Add onion and cook until clear. Add ground beef and cook until well browned. Pour off excess fat, then stir in flour and cook 1 minute. Add ketchup and beef broth. Bring to a boil, reduce heat and simmer for 5 minutes.</h3>
+                </div>
+                            </div>
+<div class="point">
+
+                                <div class="roundedTwo">
+                    <input type="checkbox" value="None" id="four" name="check" />
+                    <label for="four"></label>
+
+                    <h3>4. Spread the ground beef in an even layer on the bottom of a 2 quart casserole dish. Next, spread a layer of mashed carrots. Top with the mashed potato mixture and sprinkle with remaining shredded cheese.</h3>
+                </div>
+                            </div>
+<div class="point">
+
+                                <div class="roundedTwo">
+                    <input type="checkbox" value="None" id="five" name="check" />
+                    <label for="five"></label>
+
+                    <h3>5. Bake in the preheated oven for 20 minutes, or until golden brown.</h3>
+                </div>
+            </div>
+
+            </div>
+
+        </section><!--  End services  -->
+
+
+        <section class="testimonials wrapper" id="testimonials">
+            <div class="title animated wow fadeIn">
+                <h2>Testimonials</h2>
+                <h3>What are the critics saying about this</h3>
+                <hr class="separator"/>
+            </div>
+
+            <ul class="clearfix">
+                <li class="animated wow fadeInDown">
+                    <p><img src="img/quotes.png" alt="" class="quotes"/>Man! This is THE best sherpard pie.
+                        <span class="triangle"></span>
+                    </p>
+                    <div class="client">
+                        <img src="img/client1.jpg" class="avatar"/>
+                        <div class="client_details">
+                            <h4>Gai Fiery</h4>
+                            <h5>American restaurateur</h5>
+                        </div>
+                    </div>
+                </li>
+                <li class="animated wow fadeInDown"  data-wow-delay=".2s">
+                    <p><img src="img/quotes.png" alt="" class="quotes"/>What else can I say? This is the simplest yet one delicious pie.
+                        <span class="triangle"></span>
+                    </p>
+                    <div class="client">
+                        <img src="img/client2.jpg" class="avatar"/>
+                        <div class="client_details">
+                            <h4>Raycher Rey</h4>
+                            <h5>Celebrity Cook</h5>
+                        </div>
+                    </div>
+                </li>
+                <li class="animated wow fadeInDown"  data-wow-delay=".4s">
+                    <p><img src="img/quotes.png" alt="" class="quotes"/>It is a really really awesome pie.
+                        <span class="triangle"></span>
+                    </p>
+                    <div class="client">
+                        <img src="img/client3.jpg" class="avatar"/>
+                        <div class="client_details">
+                            <h4>Linda Doe</h4>
+                            <h5>Foodie</h5>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section><!--  End testimonials  -->
+
+
+        <section class="blog_posts" id="community">
+            <div class="wrapper">
+                <div class="title animated wow fadeIn">
+                    <h2>Community</h2>
+                    <h3>Time to salvage other's tastebuds</h3>
+                    <hr class="separator"/>
+                </div>
+
+                <!-- CHAT MARKUP -->
+                <div class="example-chat l-demo-container">
+                    <div class='example-chat-toolbar'>
+                        <label for="nameInput">Message:</label>
+                        
+                        <input type='text' id='nameInput'  placeholder='Type your name...'>
+                        <hr class="separator"/>
+                        <input type='text' id='messageInput'  placeholder='Type a message and press enter...'>
+                    </div>
+
+                 </div>
+
+                <div id='nvcwk-messages'></div>
+
+                <!-- CHAT JAVACRIPT -->
+                <script>
+                    // CREATE A REFERENCE TO FIREBASE
+                    var messagesRef = new Firebase('https://group19-assignment1.firebaseIO.com/');
+
+                    // REGISTER DOM ELEMENTS
+                    var messageField = $('#messageInput');
+                    var nameField = $('#nameInput');
+                    var messageList = $('#nvcwk-messages');
+
+                    // LISTEN FOR KEYPRESS EVENT
+                    messageField.keypress(function (e) {
+                        if (e.keyCode == 13) {
+                            //FIELD VALUES
+                            var username = nameField.val();
+                            var message = messageField.val();
+                            var timeStamp = Date.now()
+
+                            //SAVE DATA TO FIREBASE AND EMPTY FIELD
+                            messagesRef.child('feedback').push({name: username, text: message, time:  timeStamp});
+                            messageField.val('');
+                        }
+                    });
+
+                    // Add a callback that is triggered for each chat message.
+                    messagesRef.child("feedback").orderByChild("time").on('child_added', function (snapshot) {
+                        //GET DATA
+                        var data = snapshot.val();
+                        var username = data.name || "Anonymous";
+                        var message = data.text;
+                        var time = new Date(data.time);
+                        //time.format('YYYYMMDD');
+
+                        //CREATE ELEMENTS MESSAGE & SANITIZE TEXT
+                        var messageElement = $("<p class='example-chat l-demo-container' style='padding: 10px'><strong>" + username + "</strong>&nbsp<i>posted</i>&nbsp<i>" + time + "</i><br/><br/><span>" + message + "</span></p>");
+
+
+                        //ADD MESSAGE
+                        messageList.prepend(messageElement)
+
+                        //SCROLL TO BOTTOM OF MESSAGE LIST
+                        messageList[0].scrollTop = messageList[0].scrollHeight;
+                    });
+                </script>
+            </div>
+        </section><!--  End blog_posts  -->
+
+        <section class="blog_posts" style="margin-top:0px; background-color:white">
+            <div class="wrapper">
+                <div class="title animated wow fadeIn">
+                    <h2>Recommendations</h2>
+                    <h3>Time to match your tastebuds</h3>
+                    <hr class="separator"/>
+                </div>
+
+                <ul class="clearfix">
+                    <li class="animated wow fadeInDown">
+                        <div class="media">
+                            <div class="date">
+                                <span class="day">Apple Pie</span>
+                                <span class="month"></span>
+                            </div>
+                            <a href="#">
+                                <img src="img/apple.jpg" alt=""/>
+                            </a>
+                        </div>
+                        <a href="#">
+                            <h1>Golden Cust Apple Pie</h1>
+                        </a>
+                    </li>
+
+                    <li class="animated wow fadeInDown" data-wow-delay=".2s">
+                        <div class="media">
+                            <div class="date">
+                                <span class="day">Peach Pineapple Pie</span>
+                                <span class="month"></span>
+                            </div>
+                            <a href="#">
+                                <img src="img/peach.jpg" alt=""/>
+                            </a>
+                        </div>                  
+                        <a href="#">
+                            <h1>Savory Peach Pineapple Pie</h1>
+                        </a>
+                    </li>
+
+                    <li class="animated wow fadeInDown" data-wow-delay=".4s" id="recommendations">
+                        <div class="media">
+                            <div class="date">
+                                <span class="day">Chicken Pie</span>
+                                <span class="month"></span>
+                            </div>
+                            <a href="#">
+                                <img src="img/chicken.jpg" alt=""/>
+                            </a>
+                        </div>
+                        <a href="#">
+                            <h1>Delicious Chicken Pie</h1>
+                        </a>
+                    </li>
+
+                    <li class="animated wow fadeInDown" data-wow-delay=".6s">
+                        <div class="media">
+                            <div class="date">
+                                <span class="day">Strawberry Shortcake</span>
+                                <span class="month"></span>
+                            </div>
+                            <a href="#">
+                                <img src="img/shaw.jpg" alt=""/>
+                            </a>
+                        </div>
+                        <a href="#"><h1>Sweetest Strawberry Shortcake</h1>
+                        </a>
+                    </li>
+                </ul>
+
+
+            </div>
+        </section><!--  End blog_posts  -->
+
+
+        <footer style="background:#fafafa">
+            <div class="wrapper">
+                <div class="rights">
+                    
+                    <p>© SNNC. All Rights Reserved 2016</p>
+
+
+                    <p><a href="http://tpassignment.s3-website-ap-southeast-1.amazonaws.com/"/>Team 18</a></p>
+                    <p><a href="http://swemon.github.io/sparkphoton/"/>Team 20</a></p>
+                </div>
+
+            </div>      
+        </footer><!--  End footer  -->
+    </body>
+</html>
