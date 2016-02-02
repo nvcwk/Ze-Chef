@@ -1,0 +1,89 @@
+
+
+<html ng-app="myApp">
+<head>
+<link rel="stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="css/fancybox-thumbs.css">
+        <link rel="stylesheet" type="text/css" href="css/fancybox-buttons.css">
+        <link rel="stylesheet" type="text/css" href="css/fancybox.css">
+        <link rel="stylesheet" type="text/css" href="css/animate.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/chat.css">
+
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/fancybox.js"></script>
+        <script type="text/javascript" src="js/fancybox-buttons.js"></script>
+        <script type="text/javascript" src="js/fancybox-media.js"></script>
+        <script type="text/javascript" src="js/fancybox-thumbs.js"></script>
+        <script type="text/javascript" src="js/wow.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+<script src= "https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
+  
+</head>
+
+<body ng-controller="userController">
+
+    <section class="wrapper">
+        <div style="margin-left: auto; margin-right: auto">
+                <img class="logo" src="img/logo.png" alt="" />
+                <div>
+  <button class="btn btn-primary" ng-click="login('facebook')">Facebook Login
+  </button>
+</div>
+</div>
+        </section><!--  End billboard  -->
+
+
+
+<script>
+  var myApp = angular.module("myApp", ["firebase"]);
+  myApp.controller('userController', ['$scope', '$firebase',
+    function($scope, $firebase) {
+    $scope.newuser = {};
+    
+    // Here is where you update your Firebase URL. 
+    var theFirebaseURL = "https://group19-assignment1.firebaseIO.com";
+    
+    var ref = new Firebase(theFirebaseURL);
+    
+    $scope.currentUser = null;
+    //Check to see if the users is already logged in to Firebase and update currentUser if yes. 
+    var authData = ref.getAuth();
+      if (authData && authData!={}) {
+          $scope.currentUser = $firebase(ref.child("user").child(authData.uid)).$asObject();
+      } else {
+          console.log("User is logged out");
+      }
+    
+    $scope.logout = function(loginProvider){
+        $scope.currentUser = null;
+        ref.unauth();
+    }
+    
+    $scope.login = function(loginProvider){
+      
+          ref.authWithOAuthPopup(loginProvider, function(error, authData) {
+            if (error) {
+              console.log("Login Failed!", error);
+            } else {
+              console.log("Authenticated successfully with payload:", authData);
+              //Add the user to the users list. 
+              ref.child("user/"+authData.uid).transaction(function(currentValue) {
+                  return authData;
+                });
+
+              $scope.currentUser = $firebase(ref.child("user").child(authData.uid)).$asObject(); 
+
+              window.location = "index.html"     
+            }
+          });
+        }
+    }]);
+
+        </script>
+
+        </body>
+</html>
