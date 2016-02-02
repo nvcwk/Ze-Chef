@@ -27,7 +27,7 @@
 
         <section class="billboard2 light" style="background: white">
             <header class="wrapper light">
-                <a href=""><img class="logo" src="img/logo.png" alt="" style="margin-top:3px"/></a>
+                <a href="#"><img class="logo" src="img/logo.png" alt="" style="margin-top:3px"/></a>
                 <nav>
                     <ul>
                         <li><a href="index.html" style="color: black;">Home</a></li>
@@ -57,7 +57,7 @@
 
   upVote.child("counter").on('value', function(snap) {
       var v = snap.val();
-      v !== null && $('counter').text( parseInt(v) + " views!");
+      v !== null && $('#counter').text( parseInt(v) + " views!");
       added || add();
   });
 
@@ -103,11 +103,11 @@
                                 <span class="day">Olive oil</span>
                                 <span class="month"></span>
                             </div>
-                            <a href="">
+                            <a href="#">
                                 <img src="img/olive.jpg" alt=""/>
                             </a>
                         </div>
-                        <a href="">
+                        <a href="#">
                             <h1>2 Tbsp</h1>
                         </a>
                     </li>
@@ -118,11 +118,11 @@
                                 <span class="day">Ground Beef</span>
                                 <span class="month"></span>
                             </div>
-                            <a href="">
+                            <a href="#">
                                 <img src="img/beef.jpg" alt=""/>
                             </a>
                         </div>                  
-                        <a href="">
+                        <a href="#">
                             <h1>About 1.5 lbs</h1>
                         </a>
                     </li>
@@ -133,11 +133,11 @@
                                 <span class="day">Carrot</span>
                                 <span class="month"></span>
                             </div>
-                            <a href="">
+                            <a href="#">
                                 <img src="img/carrot.jpg" alt=""/>
                             </a>
                         </div>
-                        <a href="">
+                        <a href="#">
                             <h1>1 Grated</h1>
                         </a>
                     </li>
@@ -148,11 +148,11 @@
                                 <span class="day">Large Onion</span>
                                 <span class="month"></span>
                             </div>
-                            <a href="">
+                            <a href="#">
                                 <img src="img/onion.jpg" alt=""/>
                             </a>
                         </div>
-                        <a href="">
+                        <a href="#">
                             <h1>1 Grated</h1>
                         </a>
                     </li>
@@ -165,11 +165,11 @@
                                 <span class="day">Frozen peas</span>
                                 <span class="month"></span>
                             </div>
-                            <a href="">
+                            <a href="#">
                                 <img src="img/peas.jpg" alt=""/>
                             </a>
                         </div>
-                        <a href="">
+                        <a href="#">
                             <h1>A bag</h1>
                         </a>
                     </li>
@@ -180,11 +180,11 @@
                                 <span class="day">Fresh Rosemary</span>
                                 <span class="month"></span>
                             </div>
-                            <a href="">
+                            <a href="#">
                                 <img src="img/rose.jpeg" alt=""/>
                             </a>
                         </div>                  
-                        <a href="">
+                        <a href="#">
                             <h1>Chive</h1>
                         </a>
                     </li>
@@ -195,11 +195,11 @@
                                 <span class="day">Fresh Thyme</span>
                                 <span class="month"></span>
                             </div>
-                            <a href="">
+                            <a href="#">
                                 <img src="img/thyme.jpeg" alt=""/>
                             </a>
                         </div>
-                        <a href="">
+                        <a href="#">
                             <h1>Chive</h1>
                         </a>
                     </li>
@@ -210,11 +210,11 @@
                                 <span class="day">Minced Garlic</span>
                                 <span class="month"></span>
                             </div>
-                            <a href="">
+                            <a href="#">
                                 <img src="img/garlic.jpg" alt=""/>
                             </a>
                         </div>
-                        <a href="">
+                        <a href="#">
                             <h1>4 cloves</h1>
                         </a>
                     </li>
@@ -353,9 +353,9 @@
                     var messagesRef = new Firebase('https://group19-assignment1.firebaseIO.com/');
 
                     // REGISTER DOM ELEMENTS
-                    var messageField = $('messageInput');
-                    var nameField = $('nameInput');
-                    var messageList = $('nvcwk-messages');
+                    var messageField = $('#messageInput');
+                    var nameField = $('#nameInput');
+                    var messageList = $('#nvcwk-messages');
 
                     // LISTEN FOR KEYPRESS EVENT
                     messageField.keypress(function (e) {
@@ -409,11 +409,11 @@
                                 <span class="day">Apple Pie</span>
                                 <span class="month"></span>
                             </div>
-                            <a href="">
+                            <a href="#">
                                 <img src="img/apple.jpg" alt=""/>
                             </a>
                         </div>
-                        <a href="">
+                        <a href="#">
                             <h1>Golden Cust Apple Pie</h1>
                         </a>
                     </li>
@@ -424,11 +424,11 @@
                                 <span class="day">Peach Pineapple Pie</span>
                                 <span class="month"></span>
                             </div>
-                            <a href="">
+                            <a href="#">
                                 <img src="img/peach.jpg" alt=""/>
                             </a>
                         </div>                  
-                        <a href="">
+                        <a href="#">
                             <h1>Savory Peach Pineapple Pie</h1>
                         </a>
                     </li>
@@ -439,11 +439,11 @@
                                 <span class="day">Chicken Pie</span>
                                 <span class="month"></span>
                             </div>
-                            <a href="">
+                            <a href="#">
                                 <img src="img/chicken.jpg" alt=""/>
                             </a>
                         </div>
-                        <a href="">
+                        <a href="#">
                             <h1>Delicious Chicken Pie</h1>
                         </a>
                     </li>
@@ -454,11 +454,11 @@
                                 <span class="day">Strawberry Shortcake</span>
                                 <span class="month"></span>
                             </div>
-                            <a href="">
+                            <a href="#">
                                 <img src="img/shaw.jpg" alt=""/>
                             </a>
                         </div>
-                        <a href=""><h1>Sweetest Strawberry Shortcake</h1>
+                        <a href="#"><h1>Sweetest Strawberry Shortcake</h1>
                         </a>
                     </li>
                 </ul>
@@ -468,7 +468,7 @@
         </section><!--  End blog_posts  -->
 
 
-        <footer style="background:fafafa">
+        <footer style="background:#fafafa">
             <div class="wrapper">
                 <div class="rights">
                     
